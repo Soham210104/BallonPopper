@@ -8,13 +8,16 @@ public class BallonSpawner : MonoBehaviour
     public Transform spawner;
     [SerializeField]private float  spawnInterval;
     [SerializeField]private float ballonForce;
+    private float spawnPosChanged;
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GetComponent<Transform>();
+        //spawner = GetComponent<Transform>();
         ballonForce = 25f;
         spawnInterval = 6f;
-        InvokeRepeating("balloonSpawner", 0f, spawnInterval);
+        spawnPosChanged = spawnInterval;
+        InvokeRepeating("balloonSpawner", 2f, spawnInterval);
+        InvokeRepeating("SpawnerPositionChanged", 2f, spawnPosChanged);
     }
 
     // Update is called once per frame
@@ -29,5 +32,11 @@ public class BallonSpawner : MonoBehaviour
         GameObject newBallon = Instantiate(randomBalloon, spawner.position, randomBalloon.transform.rotation);
         Rigidbody ballonRigidBody = newBallon.GetComponent<Rigidbody>();
         ballonRigidBody.AddForce(Vector3.up * ballonForce, ForceMode.Acceleration);
+    }
+
+    void SpawnerPositionChanged()
+    {
+        float newX = Random.Range(-2.5f, 2.5f);
+        spawner.position = new Vector3(newX, spawner.position.y, spawner.position.z);
     }
 }
