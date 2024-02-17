@@ -23,24 +23,38 @@ public class BallonSpawner : MonoBehaviour
         //ballonForce = 35f;
         //spawnInterval = 1f;
 
+//----------------------THIS WAS THE FIRST APPROACH USED TO GET ACCESS TO THE UNITY-JSON SCRIPT but it wont worked---------------------------------
         //string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "unity_data.json");
         //jsonFilePath = jsonFilePath.Replace("\\", "/");
         //Debug.Log("JSON File Path: " + jsonFilePath);
+//---------------------------------------------------------------------------------------------------------
+
+//-----------------------This is the another approoach i have used------------------------
+        //Resources is a special class which allows to load assets at a runtime from folder named resource
+        //Asset from this folder can be used with the help of Resource.Load.
+        //TextAsset class is used to represent a text asset in Unity  such as text file,here unity-data is the text file.
         TextAsset jsonFile = Resources.Load<TextAsset>("unity_data");
+
         //if (File.Exists(jsonFilePath))
+
+
         if (jsonFile != null)
         {
-            //Debug.Log("Python integrated");
+         
             //string jsonText = File.ReadAllText(jsonFile);
+
             string jsonText = jsonFile.text;
+
             // Parse the JSON data
             var jsonData = JsonUtility.FromJson<SpawnData>(jsonText);
+
             /*
                 It is using Unity's Jsonutility class to convert JSON formatted string('jsontext') into a C# object of type SpawnData.
                 1)Jsonutilityis a class provided by unity for working with JSON data.
                 2)FromJson is a method to convert JSON string to an object of type 'SpawnData'
              */
             //var jsonData = JsonUtility.FromJson<SpawnData>(jsonText);
+
 
             // Update the spawn interval and balloon force
             spawnInterval = jsonData.spawnInterval;
