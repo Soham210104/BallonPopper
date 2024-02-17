@@ -1,7 +1,7 @@
 import json
 
 # Set the desired values
-spawn_interval = 1.5
+spawn_interval = 0.8
 balloon_force = 40.0
 
 # Create a dictionary to hold the data
