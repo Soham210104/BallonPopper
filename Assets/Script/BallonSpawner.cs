@@ -13,6 +13,7 @@ public class BallonSpawner : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score;
     public AudioSource audio;
+    public ParticleSystem popEffect;
     void Start()
     {
         
@@ -59,6 +60,10 @@ public class BallonSpawner : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 audio.Play();
+               
+                popEffect.transform.position = hit.collider.transform.position;
+                popEffect.Play();
+                
                 Destroy(hit.collider.gameObject);
 
                 score++;
