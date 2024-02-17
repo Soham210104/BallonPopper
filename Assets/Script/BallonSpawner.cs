@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BallonSpawner : MonoBehaviour
@@ -9,21 +10,28 @@ public class BallonSpawner : MonoBehaviour
     [SerializeField]private float  spawnInterval;
     [SerializeField]private float ballonForce;
     private float spawnPosChanged;
-    // Start is called before the first frame update
+    public TextMeshProUGUI scoreText;
+    public int score;
+    
     void Start()
     {
-        //spawner = GetComponent<Transform>();
+        
         ballonForce = 35f;
         spawnInterval = 1f;
         spawnPosChanged = spawnInterval;
         InvokeRepeating("balloonSpawner", 2f, spawnInterval);
         InvokeRepeating("SpawnerPositionChanged", 2f, spawnPosChanged);
+        score = 0;
+        UpdateScoreText();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleMouseClick();
+        }
     }
 
     void balloonSpawner()
@@ -38,5 +46,29 @@ public class BallonSpawner : MonoBehaviour
     {
         float newX = Random.Range(-2.5f, 2.5f);
         spawner.position = new Vector3(newX, spawner.position.y, spawner.position.z);
+    }
+    void HandleMouseClick()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        // Cast a ray from the mouse position
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Check if the clicked object has the "Player" tag
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Player Clicked");
+                Destroy(hit.collider.gameObject);
+
+                score++;
+                UpdateScoreText();
+            }
+        }
+    }
+
+    void UpdateScoreText()
+    {
+         scoreText.text = "Score: " + score;
     }
 }
