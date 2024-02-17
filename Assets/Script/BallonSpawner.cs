@@ -13,8 +13,8 @@ public class BallonSpawner : MonoBehaviour
     void Start()
     {
         //spawner = GetComponent<Transform>();
-        ballonForce = 25f;
-        spawnInterval = 6f;
+        ballonForce = 35f;
+        spawnInterval = 1f;
         spawnPosChanged = spawnInterval;
         InvokeRepeating("balloonSpawner", 2f, spawnInterval);
         InvokeRepeating("SpawnerPositionChanged", 2f, spawnPosChanged);

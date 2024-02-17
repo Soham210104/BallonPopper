@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallonDestroyer : MonoBehaviour
+public class BalloonDestroyer : MonoBehaviour
 {
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        
-        GameObject otherGameObject = collision.gameObject;
-
-        
-        if (otherGameObject.CompareTag("Player"))
+        // Check if the triggering object has the "Player" tag
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Player Destroyed");
-            Destroy(otherGameObject);
+            Destroy(other.gameObject);
         }
     }
 }
