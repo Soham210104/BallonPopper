@@ -12,7 +12,7 @@ public class BallonSpawner : MonoBehaviour
     private float spawnPosChanged;
     public TextMeshProUGUI scoreText;
     public int score;
-    
+    public AudioSource audio;
     void Start()
     {
         
@@ -58,7 +58,7 @@ public class BallonSpawner : MonoBehaviour
             // Check if the clicked object has the "Player" tag
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Player Clicked");
+                audio.Play();
                 Destroy(hit.collider.gameObject);
 
                 score++;
