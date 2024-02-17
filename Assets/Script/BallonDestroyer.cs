@@ -6,7 +6,7 @@ public class BalloonDestroyer : MonoBehaviour
 {
     public TextMeshProUGUI livesCounter;
     public int lifes;
-
+    public bool gameOver = false;
     private void Start()
     {
         lifes = 5;
@@ -23,6 +23,10 @@ public class BalloonDestroyer : MonoBehaviour
             {
                 UpdateLifeCounter();
             }
+            if(lifes < 0 )
+            {
+                OnGameOver();
+            }
             Destroy(other.gameObject);
         }
     }
@@ -32,5 +36,10 @@ public class BalloonDestroyer : MonoBehaviour
         livesCounter.text = lifes.ToString();
     }
 
-   
+    private void OnGameOver()
+    {
+        Debug.Log("Game over");
+        gameOver = true;
+    }
+
 }
