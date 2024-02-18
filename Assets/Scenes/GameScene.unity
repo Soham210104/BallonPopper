@@ -5037,17 +5037,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150883298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1354, y: 3.1354, z: 3.1354}
+  m_LocalScale: {x: 4.1958375, y: 4.1958375, z: 4.1958375}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 206271706}
-  m_Father: {fileID: 1309226772}
+  m_Father: {fileID: 1035684094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 402, y: -338}
+  m_AnchoredPosition: {x: 583.31696, y: -345.2593}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150883300
@@ -5093,7 +5093,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 150883301}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480642820}
+        m_TargetAssemblyTypeName: BallonSpawner, Assembly-CSharp
+        m_MethodName: MenuScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &150883301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6557,7 +6569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1035684094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6573,6 +6585,8 @@ RectTransform:
   - {fileID: 857012889}
   - {fileID: 664604949}
   - {fileID: 784704538}
+  - {fileID: 1468452607}
+  - {fileID: 150883299}
   m_Father: {fileID: 1309226772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6851,8 +6865,6 @@ RectTransform:
   - {fileID: 1432286536}
   - {fileID: 492376700}
   - {fileID: 1035684094}
-  - {fileID: 1468452607}
-  - {fileID: 150883299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7074,17 +7086,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468452606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1354, y: 3.1354, z: 3.1354}
+  m_LocalScale: {x: 4.1958375, y: 4.1958375, z: 4.1958375}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 358088992}
-  m_Father: {fileID: 1309226772}
+  m_Father: {fileID: 1035684094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -442, y: -338}
+  m_AnchoredPosition: {x: -546.136, y: -345.2593}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468452608
@@ -7130,7 +7142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1468452609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 480642820}
+        m_TargetAssemblyTypeName: BallonSpawner, Assembly-CSharp
+        m_MethodName: SendDataToLeaderBoard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1468452609
 MonoBehaviour:
   m_ObjectHideFlags: 0

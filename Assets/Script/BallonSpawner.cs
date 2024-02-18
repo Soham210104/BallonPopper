@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using System.IO;
 using UnityEditor.Experimental.GraphView;
-
+using UnityEngine.SceneManagement;
 public class BallonSpawner : MonoBehaviour
 {
     public GameObject[] ballons;
@@ -177,7 +177,7 @@ public class BallonSpawner : MonoBehaviour
 
     public void MenuScene()
     {
-
+        SceneManager.LoadScene(0);
     }
     
 }
