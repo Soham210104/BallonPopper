@@ -6,13 +6,14 @@ using PlayFab;
 
 public class PlayFabManager : MonoBehaviour
 {
+    private int highestScore;
     // Start is called before the first frame update
     void Start()
     {
         Login();
     }
 
-    // Update is called once per frame
+    
     void Login()
     {
         var request = new LoginWithCustomIDRequest
@@ -32,5 +33,32 @@ public class PlayFabManager : MonoBehaviour
     {
         Debug.Log("Error while logging in");
         Debug.Log(error.GenerateErrorReport());
+    }
+
+    public void SendLeaderBoard(int score)
+    {
+        var request = new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = "GameScore",
+                    Value = score
+
+                }
+            }
+        };
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardUpdate, OnError);
+    }
+
+    void OnLeaderBoardUpdate(UpdatePlayerStatisticsResult result)
+    {
+        Debug.Log("Succesfull leaderboard sent");
+    }
+
+    public int GetHighestScore()
+    {
+        return highestScore;
     }
 }

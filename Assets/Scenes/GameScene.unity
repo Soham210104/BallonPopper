@@ -5260,6 +5260,7 @@ MonoBehaviour:
   score: 0
   audio: {fileID: 480642822}
   popEffect: {fileID: 6438015}
+  displayHighScore: {fileID: 225219297}
   finalScore: 0
 --- !u!4 &480642821
 Transform:
@@ -6178,7 +6179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1035684094
 RectTransform:
   m_ObjectHideFlags: 0
