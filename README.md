@@ -9,7 +9,7 @@ Players can pop the ballon's with the help of Mouse Click and players should avo
 
 ### 2.External Python Control
 This game is controlled externally by the python script and in that python script the Spawn interval time of Ballon and the speed by which the ballon floats is controlled.
-*My python script is in the Scrips folder*
+
 
 ### 3.MainMenu
 This game consist of interactive menu section which serves as a entry point for the player and player's can also view their leaderboard.
