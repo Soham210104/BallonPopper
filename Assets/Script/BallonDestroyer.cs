@@ -46,7 +46,7 @@ public class BalloonDestroyer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the triggering object has the "Player" tag
+        
         if (other.CompareTag("Player"))
         {
             //Debug.Log("Player Destroyed");

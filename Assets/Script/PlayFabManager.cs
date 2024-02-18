@@ -46,7 +46,7 @@ public class PlayFabManager : MonoBehaviour
 
     public void SendLeaderBoard(int score)
     {
-        // Get the current score from the BallonSpawner
+        
         Debug.Log("Sending leaderboard...");
         
         Debug.Log("Current Score: " + score);
@@ -77,24 +77,24 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
         {
             StatisticName = "GameScore",
-            StartPosition = 0, // Adjust as needed
-            MaxResultsCount = 1 // Fetch only the player's entry
+            StartPosition = 0, 
+            MaxResultsCount = 1 
         }, (result) => OnLeaderboardGet(result, onLeaderboardFetched), OnError);
     }
 
     private void OnLeaderboardGet(GetLeaderboardResult result, Action<int, string, int> onLeaderboardFetched)
     {
-        // Process the leaderboard data
+        
         if (result.Leaderboard != null && result.Leaderboard.Count > 0)
         {
             var playerEntry = result.Leaderboard[0];
 
-            // Extract relevant information
+            
             int rank = playerEntry.Position;
             string id = playerEntry.PlayFabId;
             int score = playerEntry.StatValue;
 
-            // Execute the provided callback with the fetched data
+            
             onLeaderboardFetched?.Invoke(rank, id, score);
         }
         else

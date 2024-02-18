@@ -137,10 +137,10 @@ public class BallonSpawner : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // Cast a ray from the mouse position
+        
         if (Physics.Raycast(ray, out hit))
         {
-            // Check if the clicked object has the "Player" tag
+            
             if (hit.collider.CompareTag("Player"))
             {
                 audio.Play();
