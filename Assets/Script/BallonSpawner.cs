@@ -167,7 +167,17 @@ public class BallonSpawner : MonoBehaviour
         }
         displayHighScore.text = highestScore.ToString();
 
+        
+    }
+
+    public void SendDataToLeaderBoard()
+    {
         playFab.SendLeaderBoard(finalScore);
+    }
+
+    public void MenuScene()
+    {
+
     }
     
 }
