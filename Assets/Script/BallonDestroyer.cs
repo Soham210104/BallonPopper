@@ -7,10 +7,13 @@ public class BalloonDestroyer : MonoBehaviour
     public TextMeshProUGUI livesCounter;
     public int lifes;
     public bool gameOver = false;
+    //Singleton reference for Game Over variable
+    
     private void Start()
     {
         lifes = 5;
         UpdateLifeCounter();
+        
     }
     private void OnTriggerEnter(Collider other)
     {

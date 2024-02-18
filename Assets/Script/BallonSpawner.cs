@@ -17,6 +17,10 @@ public class BallonSpawner : MonoBehaviour
     public int score;
     public AudioSource audio;
     public ParticleSystem popEffect;
+    
+
+    // Assign the BalloonDestroyer.Instance in Awake or Start
+
     void Start()
     {
 
