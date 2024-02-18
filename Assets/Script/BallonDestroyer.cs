@@ -49,7 +49,7 @@ public class BalloonDestroyer : MonoBehaviour
         // Check if the triggering object has the "Player" tag
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Destroyed");
+            //Debug.Log("Player Destroyed");
             lifes--;
             if(lifes >= 0 )
             {
@@ -70,7 +70,7 @@ public class BalloonDestroyer : MonoBehaviour
 
     private void OnGameOver()
     {
-        Debug.Log("Game over");
+        //Debug.Log("Game over");
         gameOver = true;
         GameOverPanel.SetActive(true);
         currentScore = ballonSpawner.finalScore;

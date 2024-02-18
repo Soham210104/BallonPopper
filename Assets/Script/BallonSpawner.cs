@@ -18,13 +18,13 @@ public class BallonSpawner : MonoBehaviour
     public AudioSource audio;
     public ParticleSystem popEffect;
     private BalloonDestroyer balloonDestroyer;
-    private PlayFabManager playFabManager;
 
+    public PlayFabManager playFab;
     public TextMeshProUGUI displayHighScore;
-    private int highestScore;
+    public int highestScore;
     public int finalScore;
     private static BallonSpawner instance;
-
+   
     public static BallonSpawner Instance
     {
         get
@@ -45,16 +45,12 @@ public class BallonSpawner : MonoBehaviour
     // Assign the BalloonDestroyer.Instance in Awake or Start
     private void Awake()
     {
-        playFabManager = FindObjectOfType<PlayFabManager>();
-        if (playFabManager == null)
-        {
-            Debug.LogError("PlayFabManager instance not found in the scene.");
-        }
+        playFab = FindObjectOfType<PlayFabManager>();
         balloonDestroyer = BalloonDestroyer.Instance;
     }
     void Start()
     {
-        playFabManager.GetPlayerStatistics(OnGetPlayerStatistics);
+        
         //ballonForce = 35f;
         //spawnInterval = 1f;
 
@@ -165,12 +161,13 @@ public class BallonSpawner : MonoBehaviour
          scoreText.text = "Score: " + score;
          finalScore = score;
 
-        if(finalScore >= highestScore) 
+        if (finalScore >= highestScore)
         {
-            highestScore = finalScore;
+            highestScore = finalScore;      
         }
-        
         displayHighScore.text = highestScore.ToString();
-        //playFabManager.SendLeaderBoard(highestScore);
+
+        playFab.SendLeaderBoard(finalScore);
     }
+    
 }

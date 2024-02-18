@@ -6,14 +6,21 @@ using PlayFab;
 
 public class PlayFabManager : MonoBehaviour
 {
-    private int highestScore;
+    //public BallonSpawner spawner;
+    int SCORE;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        //spawner = FindObjectOfType<BallonSpawner>();
+    }
     void Start()
     {
+       
         Login();
     }
-
-    
+  
+    // Update is called once per frame
     void Login()
     {
         var request = new LoginWithCustomIDRequest
@@ -37,18 +44,22 @@ public class PlayFabManager : MonoBehaviour
 
     public void SendLeaderBoard(int score)
     {
+        // Get the current score from the BallonSpawner
+        Debug.Log("Sending leaderboard...");
+        
+        Debug.Log("Current Score: " + score);
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
+        {
+            new StatisticUpdate
             {
-                new StatisticUpdate
-                {
-                    StatisticName = "GameScore",
-                    Value = score
-
-                }
+                StatisticName = "GameScore",
+                Value = score
             }
+        }
         };
+
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardUpdate, OnError);
     }
 
@@ -57,8 +68,4 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log("Succesfull leaderboard sent");
     }
 
-    public int GetHighestScore()
-    {
-        return highestScore;
-    }
 }
