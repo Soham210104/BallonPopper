@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
+using System;
 
 public class PlayFabManager : MonoBehaviour
 {
     //public BallonSpawner spawner;
-    int SCORE;
+    
     // Start is called before the first frame update
 
     private void Awake()
@@ -19,9 +20,10 @@ public class PlayFabManager : MonoBehaviour
        
         Login();
     }
-  
+    
+    
     // Update is called once per frame
-    void Login()
+    public void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
@@ -66,6 +68,39 @@ public class PlayFabManager : MonoBehaviour
     void OnLeaderBoardUpdate(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Succesfull leaderboard sent");
+
+    }
+
+    public void FetchLeaderboardData(Action<int, string, int> onLeaderboardFetched)
+    {
+        // Fetch leaderboard data
+        PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
+        {
+            StatisticName = "GameScore",
+            StartPosition = 0, // Adjust as needed
+            MaxResultsCount = 1 // Fetch only the player's entry
+        }, (result) => OnLeaderboardGet(result, onLeaderboardFetched), OnError);
+    }
+
+    private void OnLeaderboardGet(GetLeaderboardResult result, Action<int, string, int> onLeaderboardFetched)
+    {
+        // Process the leaderboard data
+        if (result.Leaderboard != null && result.Leaderboard.Count > 0)
+        {
+            var playerEntry = result.Leaderboard[0];
+
+            // Extract relevant information
+            int rank = playerEntry.Position;
+            string id = playerEntry.PlayFabId;
+            int score = playerEntry.StatValue;
+
+            // Execute the provided callback with the fetched data
+            onLeaderboardFetched?.Invoke(rank, id, score);
+        }
+        else
+        {
+            Debug.LogError("No leaderboard data found in the result");
+        }
     }
 
 }

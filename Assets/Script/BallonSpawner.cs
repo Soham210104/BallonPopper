@@ -21,7 +21,7 @@ public class BallonSpawner : MonoBehaviour
 
     public PlayFabManager playFab;
     public TextMeshProUGUI displayHighScore;
-    public int highestScore;
+    //public int highestScore;
     public int finalScore;
     private static BallonSpawner instance;
    
@@ -161,11 +161,11 @@ public class BallonSpawner : MonoBehaviour
          scoreText.text = "Score: " + score;
          finalScore = score;
 
-        if (finalScore >= highestScore)
-        {
-            highestScore = finalScore;      
-        }
-        displayHighScore.text = highestScore.ToString();
+        //if (finalScore >= highestScore)
+        //{
+        //    highestScore = finalScore;      
+        //}
+        //displayHighScore.text = highestScore.ToString();
 
         
     }
