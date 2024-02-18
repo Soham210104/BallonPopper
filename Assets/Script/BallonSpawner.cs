@@ -20,7 +20,7 @@ public class BallonSpawner : MonoBehaviour
     private BalloonDestroyer balloonDestroyer;
 
     public PlayFabManager playFab;
-    public TextMeshProUGUI displayHighScore;
+    //public TextMeshProUGUI displayHighScore;
     //public int highestScore;
     public int finalScore;
     private static BallonSpawner instance;
