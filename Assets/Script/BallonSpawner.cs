@@ -17,10 +17,32 @@ public class BallonSpawner : MonoBehaviour
     public int score;
     public AudioSource audio;
     public ParticleSystem popEffect;
-    
+    private BalloonDestroyer balloonDestroyer;
+
+    public int finalScore;
+    private static BallonSpawner instance;
+
+    public static BallonSpawner Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<BallonSpawner>();
+                if (instance == null)
+                {
+                    Debug.LogError("BalloonDestroyer instance not found in the scene.");
+                }
+            }
+            return instance;
+        }
+    }
 
     // Assign the BalloonDestroyer.Instance in Awake or Start
-
+    private void Awake()
+    {
+        balloonDestroyer = BalloonDestroyer.Instance;
+    }
     void Start()
     {
 
@@ -80,7 +102,13 @@ public class BallonSpawner : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(balloonDestroyer.gameOver==true)
+        {
+            CancelInvoke("balloonSpawner");
+            CancelInvoke("SpawnerPositionChanged");
+        }
+
+        if (Input.GetMouseButtonDown(0) && balloonDestroyer.gameOver == false)
         {
             HandleMouseClick();
         }
@@ -126,5 +154,6 @@ public class BallonSpawner : MonoBehaviour
     void UpdateScoreText()
     {
          scoreText.text = "Score: " + score;
+         finalScore = score;
     }
 }
